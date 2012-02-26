@@ -56,8 +56,8 @@ $(document).ready(function () {
             Height: layer.rows
           },
           "Blending Mode": {
-            Type: layer.blendMode.blending,
-            Opacity: Math.floor(layer.blendMode.opacp)
+            Type: layer.blendMode.blender,
+            Opacity: Math.floor(layer.blendMode.opacity)
           },
           "Images": layer.images.length + " image(s)"
         };
