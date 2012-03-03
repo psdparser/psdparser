@@ -61,21 +61,35 @@ for layer in psd.layerMask.layers
       </div>
     </section>
 
-    <section id="demo" class="row">
-      <div class="span12">
-        <h2>Demo</h2>
-        <p>Drag &amp; drop a PSD file from your computer into the box below. It will be parsed, and some information about it will be displayed to the right. Note that this requires a browser that supports the HTML5 drag &amp; drop API.</p>
-      </div>
+    <section id="demo">
+      <div class="row">
+        <div class="span12">
+          <h2>Demo</h2>
+          <p>Drag &amp; drop a PSD file from your computer into the box below. It will be parsed, and some information about it will be displayed to the right. Note that this requires a browser that supports the HTML5 drag &amp; drop API.</p>
+        </div>
 
-      <div class="span4">
-        <div id="psd-drop">
-          <h2>Drop PSD here</h2>
+        <div class="span12">
+          <div id="psd-drop">
+            <h2>Drop PSD here</h2>
+          </div>
         </div>
       </div>
-      <div class="span8">
-        <h3>PSD Parser Output</h3>
-        <div id="psd-output">
+
+      <div class="row">
+        <div id="read-status" class="span12">
           <div class="alert alert-info">Waiting for a file to analyze...</div>
+        </div>
+      </div>
+
+      <div id="output" class="row">
+        <div class="span8">
+          <h3>PSD Image Output</h3>
+          <div id="image-output"></div>
+        </div>
+
+        <div class="span4">
+          <h3>PSD Information</h3>
+          <div id="text-info"></div>
         </div>
       </div>
     </section>

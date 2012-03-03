@@ -20,3 +20,11 @@
 #demo .span12 {
   padding-bottom: 20px
 }
+
+#image-output > img {
+  max-width: 620px;
+}
+
+#output {
+  padding-bottom: 20px;
+}

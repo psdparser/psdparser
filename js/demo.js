@@ -16,11 +16,18 @@ $(document).ready(function () {
 
     var file = e.dataTransfer.files[0];
     if (file.type !== "image/vnd.adobe.photoshop" && file.type !== "application/x-photoshop") {
-      $("#psd-output").html("<div class=\"alert alert-error\">Error: not a PSD file.</div>");
+      $("#read-status > .alert")
+        .removeClass()
+        .addClass('alert alert-error')
+        .html("Error: not a PSD file.");
+
       return;
     }
 
-    $("#psd-output").html("<div class=\"alert alert-success\">PSD file loaded, parsing...</div>");
+    $("#read-status > .alert")
+      .removeClass()
+      .addClass('alert alert-success')
+      .html("PSD loaded. Parsing...");
 
     var reader = new FileReader();
 
@@ -28,8 +35,29 @@ $(document).ready(function () {
       var bytes = new Uint8Array(f.target.result);
 
       psd = new PSD(bytes);
-      psd.parse();
 
+      try {
+        psd.parse();
+      } catch (e) {
+        $("#read-status > .alert")
+          .removeClass()
+          .addClass('alert alert-error')
+          .html("ERROR: could not read PSD file due to a parsing error. This is a bug.")
+
+        // Reset so we can parse image info
+        psd = new PSD(bytes);
+        psd.parseImageData();
+      }
+
+      var image = $("<img />").attr('src', psd.toImage());
+      $("#image-output").html(image);
+
+      if ($("#read-status > .alert").hasClass('alert-error')) {
+        $("#read-status > .alert").html("Finished, but with errors. This is a bug.");
+      } else {
+        $("#read-status > .alert").html("Finished parsing!")
+      }
+      
       var psdInfo = {
         "Header Info": {
           Channels: psd.header.channels,
@@ -71,7 +99,7 @@ $(document).ready(function () {
 
   var outputPSDInfo = function (info) {
     var ul = listFromObject(info);
-    $("#psd-output").html(ul);
+    $("#text-info").html(ul);
   };
 
   var listFromObject = function (obj) {
