@@ -34,6 +34,13 @@ $(document).ready(function () {
     reader.onload = function (f) {
       var bytes = new Uint8Array(f.target.result);
 
+      // For demo purposes, we parse the image data only first
+      psd = new PSD(bytes);
+
+      var image = $("<img />").attr('src', psd.toImage());
+      $("#image-output").html(image);
+
+      // Start over and parse the whole file.
       psd = new PSD(bytes);
 
       try {
@@ -43,14 +50,7 @@ $(document).ready(function () {
           .removeClass()
           .addClass('alert alert-error')
           .html("ERROR: could not read PSD file due to a parsing error. This is a bug.")
-
-        // Reset so we can parse image info
-        psd = new PSD(bytes);
-        psd.parseImageData();
       }
-
-      var image = $("<img />").attr('src', psd.toImage());
-      $("#image-output").html(image);
 
       if ($("#read-status > .alert").hasClass('alert-error')) {
         $("#read-status > .alert").html("Finished, but with errors. This is a bug.");
@@ -86,8 +86,7 @@ $(document).ready(function () {
           "Blending Mode": {
             Type: layer.blendMode.blender,
             Opacity: Math.floor(layer.blendMode.opacity)
-          },
-          "Images": layer.images.length + " image(s)"
+          }
         };
       }
 
