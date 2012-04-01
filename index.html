@@ -28,16 +28,21 @@
         <h2>About</h2>
         <p>psd.js is a general purpose file parser for PSD files created in Photoshop. Given a PSD file, it can parse out information such as image size and color modes, image resources, layer info, image contents, etc.</p>
         <p>The psd.js source files are written in <a href="http://coffeescript.org">Coffeescript</a> and hosted on <a href="http://github.com/meltingice/psd.js">Github</a>.</p>
+        <p>
+          <a class="btn" href="http://github.com/meltingice/psd.js">View Source</a>
+          <a class="btn" href="/psd.js/docs/psd.html">View Documentation</a>
+          <a class="btn" href="http://search.npmjs.org/#/psd.js">npm Info</a>
+        </p>
       </div>
       <div class="span6">
         <h2>Goals</h2>
-        <p>psd.js is far from finished, but it also has a great start. Some goals of the project are:</p>
+        <p>psd.js is highly versatile. Some things it can do are:</p>
 
         <ul>
           <li>Output flattened image to PNG</li>
           <li>Output image to HTML canvas</li>
-          <li>Selectively enable/disable layers for export</li>
           <li>Extract image contents of single layers</li>
+          <li>Parse important image data such as layer size, position, etc.</li>
         </ul>
       </div>
     </section>
@@ -53,10 +58,12 @@
 psd = PSD.fromFile './path/to/file.psd'
 psd.parse()
 
-for layer in psd.layerMask.layers
+for layer in psd.layers
   console.log "Layer: #{layer.name}"
   console.log "Size: width=#{layer.cols}, height=#{layer.rows}"
   console.log "Position: top=#{layer.top}, left=#{layer.left}"
+
+psd.toFile "/path/to/output.png"
         </pre>
       </div>
     </section>
