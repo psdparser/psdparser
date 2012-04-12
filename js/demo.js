@@ -34,23 +34,21 @@ $(document).ready(function () {
     reader.onload = function (f) {
       var bytes = new Uint8Array(f.target.result);
 
-      // For demo purposes, we parse the image data only first
-      psd = new PSD(bytes);
-
-      var image = $("<img />").attr('src', psd.toImage());
-      $("#image-output").html(image);
-
       // Start over and parse the whole file.
       psd = new PSD(bytes);
 
       try {
         psd.parse();
       } catch (e) {
+        console.log(e);
         $("#read-status > .alert")
           .removeClass()
           .addClass('alert alert-error')
           .html("ERROR: could not read PSD file due to a parsing error. This is a bug.")
       }
+
+      var image = $("<img />").attr('src', psd.toImage());
+      $("#image-output").html(image);
 
       if ($("#read-status > .alert").hasClass('alert-error')) {
         $("#read-status > .alert").html("Finished, but with errors. This is a bug.");
@@ -70,8 +68,8 @@ $(document).ready(function () {
       };
 
       var layer;
-      for (var i = 0, _ref = psd.layerMask.layers.length; i < _ref; i++) {
-        layer = psd.layerMask.layers[i];
+      for (var i = 0, _ref = psd.layers.length; i < _ref; i++) {
+        layer = psd.layers[i];
         if (typeof layer.name === "undefined") {
           layer.name = "Layer " + i;
         }
