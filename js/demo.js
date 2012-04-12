@@ -67,27 +67,35 @@ $(document).ready(function () {
         "Layers": {}
       };
 
-      var layer;
-      for (var i = 0, _ref = psd.layers.length; i < _ref; i++) {
-        layer = psd.layers[i];
-        if (typeof layer.name === "undefined") {
-          layer.name = "Layer " + i;
-        }
+      var base = psd.getLayerStructure();
 
-        psdInfo.Layers[layer.name] = {
-          "Position & Size": {
-            Top: layer.top,
-            Left: layer.left,
-            Width: layer.cols,
-            Height: layer.rows
-          },
-          "Blending Mode": {
-            Type: layer.blendMode.blender,
-            Opacity: Math.floor(layer.blendMode.opacity)
+      var parseFolder = function (folder, baseObj) {
+        var layer;
+        for (var i = 0, _ref = folder.layers.length; i < _ref; i++) {
+          layer = folder.layers[i];
+
+          if (layer.layers) {
+            layer.name = "(Group) " + layer.name;
+            baseObj[layer.name] = {};
+            parseFolder(layer, baseObj[layer.name]);
+          } else {
+            baseObj[layer.name] = {
+              "Position & Size": {
+                Top: layer.top,
+                Left: layer.left,
+                Width: layer.cols,
+                Height: layer.rows
+              },
+              "Blending Mode": {
+                Type: layer.blendMode.blender,
+                Opacity: layer.blendMode.opacityPercentage + "%"
+              }
+            }
           }
-        };
-      }
-
+        }
+      };
+      
+      parseFolder(base, psdInfo["Layers"]);
       outputPSDInfo(psdInfo);
     };
 
