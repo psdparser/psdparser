@@ -15,14 +15,6 @@ $(document).ready(function () {
     e.preventDefault();
 
     var file = e.dataTransfer.files[0];
-    if (file.type !== "image/vnd.adobe.photoshop" && file.type !== "application/x-photoshop") {
-      $("#read-status > .alert")
-        .removeClass()
-        .addClass('alert alert-error')
-        .html("Error: not a PSD file.");
-
-      return;
-    }
 
     $("#read-status > .alert")
       .removeClass()
