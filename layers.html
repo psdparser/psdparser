@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>psd.js - A Photoshop PSD file parser in Javascript</title>
+
+  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="css/main.css" />
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="https://raw.github.com/meltingice/psd.js/master/lib/psd.js"></script>
+  <script type="text/javascript" src="js/layer-demo.js"></script>
+</head>
+<body>
+  <a href="http://github.com/meltingice/psd.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+
+  <div class="container">
+    <header class="page-header">
+      <h1>psd.js</h1>
+      <p class="lead">A Photoshop PSD file parser in Coffeescript for browsers and NodeJS</p>
+    </header>
+
+    <div class="row">
+      <div class="span12">
+        <h2>Layer Demo</h2>
+        <p>Drag &amp; drop a PSD file into the space below to parse it. You will be able to visualize the various layers present in the file. Layers that are larger than the image itself are not output for demo purposes.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span12">
+        <div id="psd-drop">
+          <h2>Drop PSD here</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px;">
+      <div id="read-status" class="span12">
+        <div class="alert alert-info">Waiting for a file to analyze...</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span12">
+        <ul id="path" class="breadcrumb">
+          <li>Move your mouse over the image. Layer groups/names will appear here.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="result" class="span12"></div>
+    </div>
+  </div>
+</body>
+</html>

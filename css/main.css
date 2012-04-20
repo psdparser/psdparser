@@ -28,3 +28,18 @@
 #output {
   padding-bottom: 20px;
 }
+
+#result {
+  position: relative;
+}
+
+#result .layer {
+  position: absolute;
+  cursor: pointer;
+  border: 1px #333333 solid;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+#result .layer:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
