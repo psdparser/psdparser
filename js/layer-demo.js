@@ -82,7 +82,7 @@ $(document).ready(function () {
               height: (layer.height * yFactor) + "px"
             })
             .data('name', JSON.stringify(layerPath))
-            .appendTo("#result")
+            .prependTo("#result")
 
           layerPath.pop();
         }
