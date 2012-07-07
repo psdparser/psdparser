@@ -1,4 +1,12 @@
 class PSDTypeTool
+  engineDataRegex: [
+    {search: /\u0000/g, replace: ""}
+    {search: /<</g, replace: ' {'}
+    {search: />>/g, replace: '},'}
+    {search: /\/(\w+)\s+(.*)\s/g, replace: "$1: $2,\n"}
+    {search: /\(\u00FE\u00FF(.*)\)/g, replace: '"$1"'}
+  ]
+
   constructor: (@layer, @length) ->
     @file = @layer.file
     @data = {}
@@ -40,7 +48,10 @@ class PSDTypeTool
     for char in @data.text.EngineData
       engineData += String.fromCharCode(char)
 
-    @data.text.EngineData = engineData.replace /\u0000/g, ""
+    for regex in @engineDataRegex
+      engineData = engineData.replace regex.search, regex.replace
+    
+    @data.text.EngineData = engineData
     Log.debug "Text:", @data.text
 
     warpVersion = @file.readShortInt()
