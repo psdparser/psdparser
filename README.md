@@ -48,7 +48,11 @@ psd.js is available in npm. Simply run:
 npm install psd
 ```
 
-Alternatively, download and use the `lib/psd.js` file from this repository.
+Alternatively, download and use the `lib/psd.js` file from this repository, or you can use the CDN hosted version at:
+
+```
+//cdnjs.cloudflare.com/ajax/libs/psd.js/0.4.5/psd.min.js
+```
 
 ### Loading a PSD
 
