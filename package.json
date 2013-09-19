@@ -1,14 +1,19 @@
 {
-  "name": "psd",
+  "name": "psdparser",
   "version": "0.4.5",
   "description": "A Photoshop file format (PSD) parser written in Coffeescript/Javascript",
-  "homepage": "http://meltingice.github.com/psd.js/",
-  "author": "Ryan LeFevre <ryan@twitpic.com> (http://meltingice.net/)",
+  "author": "Ryan LeFevre <ryan@twitpic.com> (http://meltingice.net)",
   "main": "./lib/psd.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/meltingice/psd.js.git"
+    "url": "https://github.com/psdparser/psdparser.git"
   },
+  "contributors": [
+    "Vitaliy Bogdanets <vitlik@gmail.com>(http://deer.org.ua)",
+    "won21kr (https://github.com/won21kr)",
+    "Martin heidegger <martin.heidegger@gmail.com>(http://leichtgewicht.at)"
+  ],
+  "license": "MIT",
   "engines": {
     "node": ">= 0.5.5"
   },
@@ -24,7 +29,7 @@
     "docco": ">= 0.3.0"
   },
   "bugs": {
-    "url": "https://github.com/meltingice/psd.js/issues"
+    "url": "https://github.com/psdparser/psdparser/issues"
   },
   "scripts": {
     "test": "cake test"
