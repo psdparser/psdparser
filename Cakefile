@@ -98,17 +98,8 @@ task 'docs', 'Generates documentation for the coffee files', ->
     util.log "Documentation built into docs/ folder."
 
 task 'test', 'Run all unit tests', ->
-  reporter = require('nodeunit').reporters.default
-  process.chdir __dirname
-
   console.log "=> Running unit tests"
-  reporter.run ['test/unit_tests'], null, ->
-
-    {TargetPractice} = require './test/targetpractice'
-    tp = new TargetPractice "psd.tp/**/*.json"
-
-    console.log "\n=> Running TargetPractice"
-    tp.runTests()
+  require('nodeunit').reporters.default.run ['test/unit_tests']
         
 task 'watch', 'Automatically recompile the CoffeeScript files when updated', ->
   util.log "Watching for changes in #{csSrcDir}"

@@ -23,6 +23,8 @@ class PSDLayer
   BLEND_MODES =
     "norm": "normal"
     "dark": "darken"
+    "dkCl": "darker color"
+    "lgCl": "lighter color"
     "lite": "lighten"
     "hue":  "hue"
     "sat":  "saturation"
@@ -162,6 +164,7 @@ class PSDLayer
 
     @blendMode.key = @blendMode.key.trim()
     @blendMode.opacityPercentage = (@blendMode.opacity * 100) / 255
+
     @blendMode.blender = BLEND_MODES[@blendMode.key]
 
     @blendMode.transparencyProtected = flags & 0x01

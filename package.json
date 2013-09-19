@@ -26,12 +26,14 @@
     "nodeunit": ">= 0.7.4",
     "glob": ">= 3.1.9",
     "png-js": ">= 0.1.0",
-    "docco": ">= 0.3.0"
+    "docco": ">= 0.3.0",
+    "colors": "~0.6.2",
+    "async": "~0.2.9"
   },
   "bugs": {
     "url": "https://github.com/psdparser/psdparser/issues"
   },
   "scripts": {
-    "test": "cake test"
+    "test": "node_modules/nodeunit/bin/nodeunit test/unit_tests"
   }
 }
