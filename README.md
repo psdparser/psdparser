@@ -1,20 +1,20 @@
-# psd.js
+# psdparser
 
 A Photoshop file format (PSD) parser written in Coffeescript/Javascript for both browsers and NodeJS implementations.
 
-This implementation is inspired by, and in some parts directly ported, from:
-
+This implementation is originally forked from [psd.js](https://github.com/meltingice/psd.js)
+which was inspired by, and in some parts directly ported, from:
   * [pypsd](http://code.google.com/p/pypsd)
   * [psdparse](https://github.com/jerem/psdparse)
   * [libpsd](http://sourceforge.net/projects/libpsd)
 
 **Please note!**
 
-The PSD file format is complex, buggy, hacky, and poorly documented. Because of this, psd.js may or may not be able to correctly parse every PSD you throw at it. Use with caution.
+The PSD file format is complex, buggy, hacky, and poorly documented. Because of this, psdparser may or may not be able to correctly parse every PSD you throw at it. Use with caution.
 
 ## Contributing
 
-If you would like to contribute to psd.js, you can refer to the [official PSD file format specifications](http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/) for basic help.
+If you would like to contribute to psdparser, you can refer to the [official PSD file format specifications](http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/) for basic help.
 
 ### Installing Development Dependencies
 
@@ -28,31 +28,31 @@ npm install -d
 
 And all of the dependencies will be installed for you automatically using npm.
 
-### Building psd.js
+### Building psdparser
 
-psd.js comes with a handy Cakefile to build the library for you. It first searches for all dependencies in the `deps/` folder, then adds the core library afterwards in the order speciifed in the Cakefile.
+psdparser comes with a handy Cakefile to build the library for you. It first searches for all dependencies in the `deps/` folder, then adds the core library afterwards in the order speciifed in the Cakefile.
 
 To build, simply run `cake build`. If you would like the library to automatically build after any source files are saved, you can run `cake watch`.
 
 Please run all of the tests before committing any code as well using `cake test`.
 
-## Using psd.js
+## Using psdparser
 
-There are two main things you can do with psd.js: parse information and export images.
+There are two main things you can do with psdparser: parse information and export images.
 
-### Installing
+<!--### Installing
 
-psd.js is available in npm. Simply run:
+psdparser is available in npm. Simply run:
 
 ```
 npm install psd
 ```
 
-Alternatively, download and use the `lib/psd.js` file from this repository, or you can use the CDN hosted version at:
+Alternatively, download and use the `lib/psdparser` file from this repository, or you can use the CDN hosted version at:
 
 ```
 //cdnjs.cloudflare.com/ajax/libs/psd.js/0.4.5/psd.min.js
-```
+```-->
 
 ### Loading a PSD
 
